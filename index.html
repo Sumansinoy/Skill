@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Research Title Keyword Extractor — an academic skill for identifying and classifying keywords from research titles.">
+<title>Research Title Keyword Extractor | Suman Kumar</title>
+<style>
+:root{--ink:#17243a;--muted:#64748b;--paper:#f5f7fb;--card:#fff;--blue:#2457c5;--cyan:#dceafe;--line:#e3e9f2;--gold:#f5bd55}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+header{background:linear-gradient(125deg,#10264b,#2457c5 70%,#3886c9);color:white;padding:28px max(22px,calc((100% - 1120px)/2)) 70px}
+nav{display:flex;gap:18px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin-bottom:58px}nav strong{letter-spacing:.04em}nav a{color:#e8f1ff;text-decoration:none;font-size:.92rem}nav a:hover{text-decoration:underline}
+.hero{max-width:850px}.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.76rem;color:#c8dcff;font-weight:700}.hero h1{font-size:clamp(2.1rem,5vw,4rem);line-height:1.08;margin:14px 0}.hero p{font-size:1.12rem;color:#e5efff;max-width:720px}.identity{display:flex;gap:10px 24px;flex-wrap:wrap;margin-top:28px;color:#e5efff;font-size:.94rem}.identity span{border-left:2px solid #9fc1ff;padding-left:10px}
+main{max-width:1120px;margin:-34px auto 70px;padding:0 20px}.section{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px;margin:22px 0;box-shadow:0 8px 28px #1b37600b}.section h2{margin:0 0 14px;font-size:1.55rem}.section h3{margin:20px 0 8px;font-size:1.08rem}.lead{color:#42536d;font-size:1.05rem}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.tile{background:#f6f8fc;border:1px solid var(--line);padding:18px;border-radius:14px}.tile b{display:block;margin-bottom:5px;color:#1d438d}.pill{display:inline-block;background:var(--cyan);color:#17418f;padding:4px 10px;border-radius:999px;font-size:.83rem;margin:4px 5px 4px 0}
+ul,ol{padding-left:22px}.steps{counter-reset:step;list-style:none;padding:0}.steps li{counter-increment:step;border-left:2px solid #c9d9f6;padding:0 0 18px 22px;position:relative}.steps li:before{content:counter(step);position:absolute;left:-14px;top:0;background:var(--blue);color:white;border-radius:50%;width:26px;height:26px;text-align:center;line-height:26px;font-size:.82rem;font-weight:700}
+.demo{background:#f8faff;border:1px solid #dce6f7;border-radius:16px;padding:20px}.demo label{display:block;font-weight:650;margin:10px 0 6px}.demo textarea{width:100%;min-height:100px;border:1px solid #cbd6e6;border-radius:10px;padding:12px;font:inherit;resize:vertical}.switches{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.switches label{display:flex;align-items:center;gap:6px;background:white;border:1px solid var(--line);padding:7px 10px;border-radius:9px;font-size:.9rem;font-weight:500;margin:0}.btn{border:0;background:var(--blue);color:white;padding:10px 16px;border-radius:9px;font-weight:700;cursor:pointer;margin:6px 8px 6px 0}.btn.secondary{background:#e7edf8;color:#1b3766}.btn:hover{filter:brightness(.94)}#results{margin-top:18px}.result-group{border:1px solid var(--line);border-radius:12px;padding:13px;margin:10px 0;background:white}.result-group h4{margin:0 0 8px}.keyword{display:inline-block;background:#edf3ff;color:#173f88;padding:5px 9px;border-radius:7px;margin:3px;font-size:.9rem}.small{font-size:.9rem;color:var(--muted)}table{width:100%;border-collapse:collapse}td,th{text-align:left;padding:11px;border-bottom:1px solid var(--line);vertical-align:top}th{background:#f4f7fc}
+footer{text-align:center;color:var(--muted);padding:30px 20px 45px}.notice{background:#fff8e8;border-left:4px solid var(--gold);padding:12px 15px;border-radius:8px;color:#6a5120}
+@media(max-width:760px){.grid{grid-template-columns:1fr}nav{margin-bottom:38px}.section{padding:20px}header{padding-bottom:60px}}
+</style>
+</head>
+<body>
+<header>
+  <nav><strong>ACADEMIC SKILL PROJECT</strong><div><a href="#overview">Overview</a>　<a href="#methodology">Methodology</a>　<a href="#demo">Try the tool</a>　<a href="#limitations">Limitations</a></div></nav>
+  <div class="hero">
+    <div class="eyebrow">Natural Language Processing · Research Support</div>
+    <h1>Research Title<br>Keyword Extractor</h1>
+    <p>An academic skill that identifies meaningful keywords and multi-word phrases from research paper titles, classifies them, and explains their relevance while preserving the title's original meaning.</p>
+    <div class="identity"><span><b>Suman Kumar</b></span><span>25MA0014</span><span>Department of Humanities and Social Sciences</span><span>IIT (ISM) Dhanbad</span></div>
+  </div>
+</header>
+<main>
+<section class="section" id="overview">
+  <h2>Abstract</h2>
+  <p class="lead">Research titles often contain important concepts that help readers understand a study's subject and scope. This project presents a Research Title Keyword Extractor skill designed to identify important words and meaningful phrases from an academic title. It accepts a title, preprocesses the text, separates individual words and phrases, extracts subject-specific terms, and organises the results into main keywords, supporting keywords, research concepts, and population or context keywords when applicable. Slash commands allow the user to choose operations such as extraction, phrase identification, simple or academic presentation, classification, counting, and explanation. The skill is designed to preserve the original meaning and avoid unrelated or unsupported keywords. Its main limitation is that extraction is based on the title supplied: it cannot represent the full contents of a paper without access to the paper itself.</p>
+  <div class="grid">
+    <div class="tile"><b>Project type</b>LLM skill / academic text-processing assistant</div>
+    <div class="tile"><b>Primary input</b>Research paper title</div>
+    <div class="tile"><b>Primary output</b>Classified keywords and key phrases</div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Objective</h2>
+  <ul>
+    <li>Identify the most meaningful words and phrases in a research title.</li>
+    <li>Separate important academic terms from common grammatical words.</li>
+    <li>Classify extracted terms by their role and relevance.</li>
+    <li>Provide optional explanations and a count of unique keywords.</li>
+    <li>Preserve the meaning of the original title and avoid inventing unrelated concepts.</li>
+    <li>Offer a simple command interface that makes the skill easy to use.</li>
+  </ul>
+</section>
+
+<section class="section">
+  <h2>Research Question</h2>
+  <p class="lead">How can an LLM-based skill identify, organise, and explain meaningful keywords and key phrases from academic research titles while preserving their original meaning?</p>
+  <h3>Supporting questions</h3>
+  <ul><li>How can important academic terms be distinguished from common grammatical words?</li><li>How can extracted terms be grouped into useful categories?</li><li>How can command switches provide different views of the same title?</li></ul>
+</section>
+
+<section class="section" id="methodology">
+  <h2>Methodology</h2>
+  <p>The skill follows a structured title-processing workflow. The stages below are taken from the supplied skill specification.</p>
+  <ol class="steps">
+    <li><b>Input module:</b> Receive a research paper title and check whether a meaningful title has been provided.</li>
+    <li><b>Text preprocessing:</b> Remove unnecessary punctuation, identify common grammatical words, and preserve academic terminology.</li>
+    <li><b>Tokenisation:</b> Divide the title into individual words and identify meaningful combinations of words.</li>
+    <li><b>Keyword extraction:</b> Identify the main research topic, subject-specific terms, and any population, context, or research area stated in the title.</li>
+    <li><b>Keyword classification:</b> Organise terms into main keywords, supporting keywords, research concepts, and population/context keywords where applicable.</li>
+    <li><b>Output:</b> Present the result in a structured table or list, adding explanations or a keyword count when requested.</li>
+  </ol>
+  <div class="notice"><b>Implementation note:</b> The interactive example on this webpage is a small browser-based demonstration using simple text rules. It illustrates the workflow; it is not a live connection to an LLM or a complete implementation of the uploaded skill.</div>
+</section>
+
+<section class="section">
+  <h2>Command Interface</h2>
+  <p>Commands are written at the beginning of a prompt. Compatible switches can be combined. <code>/simple</code> and <code>/academic</code> conflict and require the user to choose one.</p>
+  <table><thead><tr><th>Command</th><th>Purpose</th></tr></thead><tbody>
+  <tr><td><code>/extract</code></td><td>Extract important keywords.</td></tr>
+  <tr><td><code>/phrases</code></td><td>Identify meaningful multi-word phrases.</td></tr>
+  <tr><td><code>/simple</code></td><td>Present keywords in simple language.</td></tr>
+  <tr><td><code>/academic</code></td><td>Present keywords in academic language.</td></tr>
+  <tr><td><code>/classify</code></td><td>Organise keywords into categories.</td></tr>
+  <tr><td><code>/count</code></td><td>Display the total number of unique extracted keywords.</td></tr>
+  <tr><td><code>/explain</code></td><td>Explain the relevance of each keyword.</td></tr>
+  <tr><td><code>/reset</code></td><td>Restore default settings.</td></tr>
+  </tbody></table>
+</section>
+
+<section class="section" id="demo">
+  <h2>Interactive Keyword Extraction Demo</h2>
+  <p>Enter a research title, select the operations, and run the demonstration.</p>
+  <div class="demo">
+    <label for="titleInput">Research paper title</label>
+    <textarea id="titleInput">The Rise of Digital Financial Fraud: A Socio-Economic Analysis of Emerging Cyber Threats.</textarea>
+    <div class="switches">
+      <label><input type="checkbox" id="phrases" checked> Identify phrases</label>
+      <label><input type="checkbox" id="classify" checked> Classify</label>
+      <label><input type="checkbox" id="count" checked> Count</label>
+      <label><input type="checkbox" id="explain"> Explain</label>
+    </div>
+    <button class="btn" id="run">Extract keywords</button><button class="btn secondary" id="reset">Reset example</button>
+    <div id="results" aria-live="polite"><p class="small">Your results will appear here.</p></div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Expected Output and Classification</h2>
+  <div class="grid">
+    <div class="tile"><b>Main keywords</b>The central topic of the research.</div>
+    <div class="tile"><b>Supporting keywords</b>Related subject-specific terms.</div>
+    <div class="tile"><b>Research concepts</b>Broader analytical ideas.</div>
+  </div>
+  <div class="tile" style="margin-top:14px"><b>Population / context keywords</b>Population, location, setting, or research area, when these are present in the title.</div>
+</section>
+
+<section class="section" id="limitations">
+  <h2>Limitations</h2>
+  <ul>
+    <li><b>Title-only analysis:</b> The skill analyses the supplied title and does not automatically read the full research paper.</li>
+    <li><b>Context limitation:</b> A short or broad title may not provide enough information to identify a population or research setting.</li>
+    <li><b>Meaning can be ambiguous:</b> A word may have different meanings in different academic disciplines; the title alone may not resolve the ambiguity.</li>
+    <li><b>Language scope:</b> The supplied specification sets English as the default language. It does not establish validated multilingual performance.</li>
+    <li><b>Output is not a full literature analysis:</b> Extracted terms should not be treated as a summary of the paper's findings or arguments.</li>
+    <li><b>Demo scope:</b> The interactive webpage uses basic browser-side rules and may not match the judgement of a full LLM skill.</li>
+  </ul>
+</section>
+
+<section class="section">
+  <h2>Future Work</h2>
+  <ul>
+    <li>Evaluate extraction quality on a collection of research titles from different academic disciplines.</li>
+    <li>Extend and test support for additional languages, including Indic languages.</li>
+    <li>Improve recognition of discipline-specific terminology and multi-word expressions.</li>
+    <li>Compare the extracted keywords with author-provided keywords and expert judgement.</li>
+    <li>Develop an integration that connects the webpage interface to the actual LLM skill.</li>
+    <li>Add export options for saving results in a research-friendly format.</li>
+  </ul>
+</section>
+
+<section class="section">
+  <h2>Conclusion</h2>
+  <p>The Research Title Keyword Extractor provides a structured approach to identifying and organising important terms from academic research titles. Its command-based design supports extraction, phrase identification, classification, counting, and explanation. By prioritising meaning preservation and avoiding unrelated terms, the skill can assist early-stage academic reading and topic identification. However, its output must be interpreted within the limits of title-only analysis and should not replace reading the full research paper.</p>
+</section>
+
+<section class="section">
+  <h2>References / Project Source</h2>
+  <ol>
+    <li><i>Research Title Keyword Extraction Skill</i> (user-provided SKILL.md specification). Project specification describing purpose, commands, modules, workflow, default settings, output format, and extraction rules.</li>
+  </ol>
+  <p class="small">No external academic references were included in the supplied skill file. Add scholarly references here if required by the course guidelines.</p>
+</section>
+
+<section class="section">
+  <h2>About</h2>
+  <p><b>Suman Kumar</b><br>Roll No.: 25MA0014<br>Department of Humanities and Social Sciences<br>IIT (ISM) Dhanbad</p>
+  <p class="small">Academic project webpage presenting the Research Title Keyword Extractor skill.</p>
+</section>
+</main>
+<footer>Research Title Keyword Extractor · Suman Kumar · IIT (ISM) Dhanbad</footer>
+<script>
+const stop = new Set(("the a an and or of in on for to from with by is are as at into").split(" "));
+const titleInput=document.getElementById("titleInput"), results=document.getElementById("results");
+const phrasesKnown=["digital financial fraud","socio-economic analysis","cyber threats","research paper titles","keyword extraction","text preprocessing","keyword classification","population or context"];
+const descriptions={
+"Digital Financial Fraud":"The central subject: fraudulent activity involving digital financial services.",
+"Socio-Economic Analysis":"The analytical perspective connecting social and economic dimensions.",
+"Cyber Threats":"The risks and harmful activities associated with digital environments.",
+"Digital Technology":"The technological setting in which the issue is situated.",
+"Research Concepts":"Ideas used to frame or analyse a research topic."
+};
+function extract(){
+ const raw=titleInput.value.trim();
+ if(!raw){results.innerHTML="<p>Please enter a research title first.</p>";return;}
+ const clean=raw.toLowerCase().replace(/[“”"'’]/g,"").replace(/[^a-z0-9\s-]/g," ").replace(/\s+/g," ").trim();
+ const words=[...new Set(clean.split(" ").filter(w=>w.length>2&&!stop.has(w)))];
+ const phraseMatches=phrasesKnown.filter(p=>clean.includes(p));
+ const titleWords=words.map(w=>w.replace(/-/g," "));
+ const main=phraseMatches.slice(0,2);
+ const remaining=titleWords.filter(w=>!main.some(p=>p.toLowerCase().includes(w)));
+ const groups=[
+  ["Main keywords",main.length?main:titleWords.slice(0,3)],
+  ["Supporting keywords",remaining.slice(0,5)],
+  ["Research concepts",phraseMatches.slice(2)],
+  ["Population / context",[]]
+ ];
+ let html="";
+ if(document.getElementById("phrases").checked && phraseMatches.length){
+  html+='<div class="result-group"><h4>Meaningful phrases</h4>'+phraseMatches.map(p=>'<span class="keyword">'+p+'</span>').join("")+'</div>';
+ }
+ if(document.getElementById("classify").checked){
+  for(const [label,items] of groups){if(items.length)html+='<div class="result-group"><h4>'+label+'</h4>'+items.map(x=>'<span class="keyword">'+x+'</span>').join("")+'</div>';}
+ } else {
+  html+='<div class="result-group"><h4>Extracted terms</h4>'+words.map(x=>'<span class="keyword">'+x+'</span>').join("")+'</div>';
+ }
+ if(document.getElementById("count").checked) html+='<p><b>Unique keyword count:</b> '+words.length+'</p>';
+ if(document.getElementById("explain").checked){
+  const explanations=phraseMatches.map(p=>'<li><b>'+p+'</b>: '+(descriptions[p[0].toUpperCase()+p.slice(1)]||"A meaningful phrase identified in the supplied title.")+'</li>').join("");
+  html+='<div class="result-group"><h4>Explanations</h4><ul>'+ (explanations||'<li>The title provides limited phrase-level context; review the terms manually.</li>')+'</ul></div>';
+ }
+ html+='<p class="small">Demonstration only: this lightweight browser tool uses a small stop-word list and phrase list. Review the output before academic use.</p>';
+ results.innerHTML=html;
+}
+document.getElementById("run").addEventListener("click",extract);
+document.getElementById("reset").addEventListener("click",()=>{titleInput.value="The Rise of Digital Financial Fraud: A Socio-Economic Analysis of Emerging Cyber Threats.";["phrases","classify","count"].forEach(id=>document.getElementById(id).checked=true);document.getElementById("explain").checked=false;results.innerHTML='<p class="small">Example restored. Select options and run the demo.</p>';});
+</script>
+</body></html>
